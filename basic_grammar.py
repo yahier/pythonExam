@@ -28,6 +28,10 @@ def string_test():
     print("精简字符串" + str5)
     print("设置宽度" + str5.center(40) + "-end")
 
+    #python中，''和""的语法意义几乎完全相同的，官方文档倾向于用单引号
+    word = 'he said "i went to dinner"' #内部有双引号，则外面用单引号
+    word = "he said 'i went to dinner'" #内部有单引号，则外面用双引号
+
 
 # 计算相关
 def test_compute():
@@ -38,8 +42,8 @@ def test_compute():
     print(str(a) + "  " + str(b) + " " + str(c) + " " + str(d))
 
     m = 4.5
-    n = int(m) #浮点变整形 值为4
-    p = float(4) # 整型变浮点4.0
+    n = int(m)  # 浮点变整形 值为4
+    p = float(4)  # 整型变浮点4.0
 
 
 # 条件语句

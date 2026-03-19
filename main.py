@@ -10,16 +10,28 @@ def print_hi(name):
 
 
 def test_array():
-    a=[1,2,3]
-    b = [4,5,6,8,10]
+    a = [1, 2, 3]
+    b = [4, 5, 6, 8, 10]
 
-    for item in zip(a,b):
+    for item in zip(a, b):
         print(item)
+
+
+b = 2
+bingo = "who"
+def test_main():
+    print("我是testMain")
+
+
+def change_int(a):
+    a = 10
 
 
 # 按装订区域中的绿色按钮以运行脚本。
 if __name__ == '__main__':
     print_hi('世界')
     test_array()
+    change_int(b)
+    print("b is %d" %b)
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助

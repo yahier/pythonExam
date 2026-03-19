@@ -1,5 +1,7 @@
 import time
 
+import list_map
+
 
 def test_datetime():
     localtime = time.localtime(time.time())
@@ -29,6 +31,16 @@ def test_time():
     print(time.strftime("%y-%m-%d %H:%M:%S 星期:%w", time.localtime()))
 
 
+import math
+
+
+# dir方法返回一个列表， 内容是模块里定义过的名字
+def test_dir():
+    print(dir(math))  # math is a built-in module
+    print(dir(list_map))
+
+
 if __name__ == '__main__':
-    test_datetime()
+    #test_datetime()
     # test_time()
+    test_dir()
