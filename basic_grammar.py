@@ -4,6 +4,7 @@ from random import choice, random, randrange
 import main
 
 
+# todo 字符串是不可变的，所有操作都会返回新字符串。
 def string_test():
     string = "hello world"
     # 剪裁获取部分
@@ -15,6 +16,10 @@ def string_test():
     # %s是一个占位符，它相当于一个“坑”，暂时占据一个位置，等着后面填入一个字符串（或者能被转换成字符串的任何数据，比如数字、变量等）
     # %：这是格式化操作符。它告诉 Python：“嘿，看这里！把前面字符串里的占位符，用后面这个值替换掉
     print('占位符 格式化 : %s' % 100)
+
+    # todo f 是 f-string（格式化字符串字面量）的标识符。把花括号 {} 里的内容替换成实际的数值。”
+    name = "bingo"
+    print(f"异常信息: {name}")
 
     # 三引号
     str4 = ''' 这是一个三引号字符串
@@ -28,9 +33,9 @@ def string_test():
     print("精简字符串" + str5)
     print("设置宽度" + str5.center(40) + "-end")
 
-    #python中，''和""的语法意义几乎完全相同的，官方文档倾向于用单引号
-    word = 'he said "i went to dinner"' #内部有双引号，则外面用单引号
-    word = "he said 'i went to dinner'" #内部有单引号，则外面用双引号
+    # python中，''和""的语法意义几乎完全相同的，官方文档倾向于用单引号
+    word = 'he said "i went to dinner"'  # 内部有双引号，则外面用单引号
+    word = "he said 'i went to dinner'"  # 内部有单引号，则外面用双引号
 
 
 # 计算相关

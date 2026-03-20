@@ -30,11 +30,15 @@ def test_read_all_content():
         print('文件不存在')
         return
 
+    # 使用 with 语句可以自动处理文件的关闭，即使在处理文件时发生异常，文件也会被正确关闭。
+    # with open(file_name, 'r', encoding='utf-8') as file:
+
     file = open(file_name, 'r', encoding='utf-8')
     # 这是最符合 Python 风格（Pythonic）的写法。它不会一次性将整个文件加载到内存中，而是每次只读取一行，非常适合处理大文件。
     for line in file:
         # line.strip() 用于去除行尾的换行符和首尾空格
         print(line.strip())
+    file.close()
 
 
 def test_read_line_by_line():
@@ -42,8 +46,10 @@ def test_read_line_by_line():
     # 用异常捕捉的方式 检查文件是否存在
     try:
         file = open(file_name, 'r', encoding='utf-8')
-        line = file.readline()
-        # 空字符串 "" 被视为 False，有内容的字符串被视为 True
+
+        ##todo readline()方法 如果读到了内容，返回包含该行文本的字符串。如果已经读到了文件末尾（没有更多内容了），它会返回一个空字符串 ''
+        ## todo  # 空字符串 "" 被视为 False，有内容的字符串被视为 True
+        line = file.readline()  # 如果指定了一个非负数的参数，则返回指定大小的字节数
         while line:
             print(line.strip())
             line = file.readline()
@@ -72,4 +78,5 @@ if __name__ == '__main__':
     # test_input()
     # test_write()
     # os.remove(file_name) #删除文件. 文件不存在 会报错
-    test_read_all_content()
+    # test_read_all_content()
+    test_read_line_by_line()
