@@ -1,3 +1,6 @@
+import timeit
+
+
 def test_list():
     list1 = ['东方', "clock", 2.23, 'john', 70.2]
     list2 = ["a无双", "z钟灵", "b白夜"]
@@ -23,13 +26,18 @@ def test_array():
     list1.__add__([46])  # todo 错误 此方法会返回一个新列表，原列表完全不会被修改。而且此方法效率低下
 
     ### 删除元素
-    list1.remove(1) #删除指定元素 匹配第一个。 如果元素不存在，会报出异常 ValueError: list.remove(x): x not in list
-    deleted_value = list1.pop() #根据索引位置删除（可返回被删除的元素).无参则删除最后一个
-    del list1[1:3] #del 是 Python 关键字（不是列表方法），可以删除列表中指定索引的元素、切片范围内的元素，甚至整个列表。无返回值
+    list1.remove(1)  # 删除指定元素 匹配第一个。 如果元素不存在，会报出异常 ValueError: list.remove(x): x not in list
+    deleted_value = list1.pop()  # 根据索引位置删除（可返回被删除的元素).无参则删除最后一个
+    del list1[1:3]  # del 是 Python 关键字（不是列表方法），可以删除列表中指定索引的元素、切片范围内的元素，甚至整个列表。无返回值
 
     array = (1, "元祖第二项", 3, 4, 5, list1)
 
-    array2 = (6, 7, 8)
+    # 打包
+    array2 = 6, 7, 8
+    # mark 解包
+    a, b, c = array2
+    # point 函数的特性：多个参数用逗号分隔时，会依次输出所有参数，参数之间默认用空格分隔。
+    print("b,b,c分别是", a, b, c, "干啥啊")
 
     print(array[0])
     print(array[1:3])
@@ -42,6 +50,9 @@ def test_array():
     # # 索引遍历
     # for index in range(len(list1)):
     #     print('遍历a : %s' % list1[index])
+    print('%.3f 秒' % timeit.timeit('[1, 2, 3, 4, 5, 6, 7, 8, 9]', number=10000000)) #M1 0.408 秒
+    print('%.3f 秒' % timeit.timeit('(1, 2, 3, 4, 5, 6, 7, 8, 9)', number=10000000)) #M1 0.046 秒
+
 
 
 # 集合。相当于列表去重
@@ -71,7 +82,7 @@ def test_map():
 
 
 if __name__ == '__main__':
-    #test_list()
+    # test_list()
     test_array()
     # test_map()
     # test_set()

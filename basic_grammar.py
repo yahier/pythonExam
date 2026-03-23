@@ -38,6 +38,8 @@ def string_test():
     word = "he said 'i went to dinner'"  # 内部有单引号，则外面用双引号
 
 
+
+
 # 计算相关
 def test_compute():
     a = 4 ** 3  # 4的3次方

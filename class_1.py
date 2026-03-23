@@ -16,6 +16,9 @@ class Animal:
         print(f"动物叫了一声 我是{self.name} 动物总数{Animal.animal_count}")
         # del self.name #mark 删除这个实例的name属性，但一般也不需要删除啊
 
+    def get_age2(animal):
+       return animal.age
+
 
 def test1():
     cat = Animal("cat", 1)
@@ -43,7 +46,7 @@ class Dog(Animal, Movable):
 # point 这个函数不关心传入的对象是 Dog 还是 Cat,它只要求对象必须有 speak()方法
 def make_animal_speak(animal):
     print(animal.speak())
-    print(animal.eat()) #mark 瞎写方法也不会报错，只会在运行时检查
+    print(animal.eat())  # mark 瞎写方法也不会报错，只会在运行时检查
 
 
 def test2():
