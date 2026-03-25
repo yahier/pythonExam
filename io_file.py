@@ -3,9 +3,18 @@ import os
 from pathlib import Path
 
 
+# 自定义异常
+class Self(BaseException):
+    def __init__(self, value):
+        self.value = value
+
+
 # input 从标准输入读入一行文本，默认的标准输入是键盘
 def test_input():
     content = input("请输入")
+    if not content.isdigit():
+        raise Self("输入的不是数字")
+
     print(content)
 
 
@@ -13,8 +22,9 @@ def test_write():
     # open(file_name [, access_mode][, buffering])
     # mode有非常多种 比如只读r(默认模式)，写入w(每次都覆盖写入，文件不存在则创建)，追加a(内容追加，文件不存在则创建)
     # mode r+ 打开一个文件用于读写。文件指针将会放在文件的开头。
-    fo = open("foo.txt", "a")
-    fo.write("\n超级塞牙人的能量级别相当于星球级别")
+    fo = open("foo.txt", "r")
+    # fo.write("\n超级塞牙人的能量级别相当于星球级别")
+    print(fo.readline())
     # content = fo.read()
     # print("content is %s" % content)
     fo.close()
@@ -43,10 +53,10 @@ def test_read_all_content():
 
 def test_read_line_by_line():
     print("准备读文件")
+    file = None
     # 用异常捕捉的方式 检查文件是否存在
     try:
         file = open(file_name, 'r', encoding='utf-8')
-
         ##todo readline()方法 如果读到了内容，返回包含该行文本的字符串。如果已经读到了文件末尾（没有更多内容了），它会返回一个空字符串 ''
         ## todo  # 空字符串 "" 被视为 False，有内容的字符串被视为 True
         line = file.readline()  # 如果指定了一个非负数的参数，则返回指定大小的字节数
@@ -56,6 +66,11 @@ def test_read_line_by_line():
     except FileNotFoundError:
         # 如果文件不存在，捕获异常并提示
         print(f"错误：文件 '{file_name}' 不存在。")
+    except UnicodeDecodeError:
+        print('读取文件时解码错误!')
+    finally:
+        if file:
+            file.close()
 
 
 def test_read2():
@@ -63,7 +78,7 @@ def test_read2():
     # f = open("foo.txt", "r")
     try:
         file = open(file_name, 'r', encoding='utf-8')
-        # read[(size)]方法 文件读取指定的字节数，如果未给定或为负则读取所有。
+        # mark read[(size)]方法 文件读取指定的字节数，如果未给定或为负则读取所有。
         content = file.read()  # 读取整个文件内容
         print(content)  # 打印内容
     except FileNotFoundError:
@@ -76,7 +91,7 @@ def test_read2():
 
 if __name__ == '__main__':
     # test_input()
-    # test_write()
+    test_write()
     # os.remove(file_name) #删除文件. 文件不存在 会报错
     # test_read_all_content()
-    test_read_line_by_line()
+    # test_read_line_by_line()

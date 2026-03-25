@@ -126,6 +126,18 @@ def ball_game():
     return
 
 
+def test_digui_():
+    value = int(input("请输入一个大于0的整数"))
+    result = 1
+    for i in range(value, 0, -1):
+        result = result * i
+    print("value is %d" % result)
+
+
+def test_digui(a):
+    print(a * test_digui(a - 1))
+
+
 # mark 注意啊 if必须后面需要要有空格的
 if __name__ == '__main__':
     # test_sushu(10)
@@ -134,4 +146,5 @@ if __name__ == '__main__':
     # print_multiplication_table()
     # max_gongyueshu()
     # min_gongbeishu()
-    ball_game()
+    # ball_game()
+    test_digui(4)

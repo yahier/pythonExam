@@ -12,17 +12,25 @@ class Animal:
         Animal.animal_count = Animal.animal_count + 1
 
     # mark 类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是self
+    # point 增加注解 @property 后，方法变成“只读属性”，调用时不用加()
+    @property
     def speak(self):
         print(f"动物叫了一声 我是{self.name} 动物总数{Animal.animal_count}")
         # del self.name #mark 删除这个实例的name属性，但一般也不需要删除啊
 
     def get_age2(animal):
-       return animal.age
+        return animal.age
+
+    @staticmethod
+    def go_():
+        print("我是类的静态方法，我可以动起来")
 
 
 def test1():
     cat = Animal("cat", 1)
-    cat.speak()
+    cat.weight = 4  # mark 动态添加属性
+    cat.speak
+    print("我是cat，我的体重kg数是 ", cat.weight)
 
 
 class Movable:
@@ -55,7 +63,9 @@ def test2():
     dog.speak()
     dog.move()
 
+    Animal.go_()
+
 
 if __name__ == "__main__":
     test1()
-    test2()
+    #test2()

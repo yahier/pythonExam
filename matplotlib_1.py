@@ -30,6 +30,7 @@ def show_1():
 def show_2():
     categories = ['A', 'B', 'C', 'D']
     values = [10, 25, 15, 30]
+    # point subplots建立坐标系
     fig, ax = plt.subplots()
     ax.bar(categories, values, color='skyblue')
     plt.show()
@@ -71,6 +72,35 @@ def show_4():
     plt.show()
 
 
+# 绘制饼图
+def show_cake():
+    print("准备打印饼图啦 ") #, np.random.rand(7, 3)
+    data = np.random.randint(100, 500, 7)
+    labels = ['apple', 'banan', 'peach', 'lizhi', 'shiliu', 'shanzhu', 'liulian']
+
+    # 宽5英寸、高5英寸的正方形画布（饼图通常用正方形），每英寸120像素
+    plt.figure(figsize=(5, 5), dpi=120)
+    plt.pie(
+        data,  # 饼图各扇区的大小
+        autopct='%.1f%%',  # 自动显示百分比，保留1位小数
+        radius=1,  # 饼图的半径
+        pctdistance=0.8,  # 百分比到圆心的距离 0.8倍半径
+        colors=np.random.rand(7, 3),  # 颜色（随机生成）
+        # 分离距离
+        # explode=[0.05, 0, 0.1, 0, 0, 0, 0],
+        # 阴影效果
+        # shadow=True,
+        # 字体属性
+        textprops=dict(fontsize=8, color='black'),
+        # 楔子属性（生成环状饼图的关键）
+        wedgeprops=dict(linewidth=1, width=0.35),
+        # 标签
+        labels=labels
+    )
+    # 定制图表的标题
+    plt.title('水果销售额占比')
+    plt.show()
+
 
 def test_1():
     data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
@@ -78,8 +108,44 @@ def test_1():
     # ax.plot(x, y, color='blue', linestyle='-', linewidth=2, label='sin(x)')
 
 
+# 简单例子
+def test_2():
+    # mark x 是一个包含 120 个元素的数组，从 -2π 均匀分布到 2π
+    x = np.linspace(-2 * np.pi, 2 * np.pi, 120)
+    y = np.sin(x)
+
+    # point 创建画布
+    plt.figure(figsize=(8, 4), dpi=120)
+    # point 绘制折线图
+    plt.plot(x, y, linewidth=1, marker='*', color='red')
+    # 先保存图片
+    plt.savefig('test.png')  # point show()方法会清空画布，如果需要保存图片，需要在show()之前调用
+    # 再显示绘图
+    plt.show()
+
+
+def test_3():
+    x = np.linspace(-2 * np.pi, 2 * np.pi, 120)
+    y1, y2 = np.sin(x), np.cos(x)
+    plt.figure(figsize=(8, 4), dpi=120)
+
+    plt.subplots()  # 推荐使用subplots 创建坐标系
+    # plt.subplots(3, 1, sharex=True)  # 推荐使用这种方法创建坐标系
+
+    # 创建坐标系（第1个图）point subplot(nrows总行数, ncols总列数, index当前子图的位置（从1开始计数)
+    # plt.subplot(2, 1, 1)
+
+    plt.plot(x, y1, linewidth=2, marker='*', color='red')
+
+    # 创建坐标系（第2个图）
+    # plt.subplot(2, 1, 2)
+    plt.plot(x, y2, linewidth=2, marker='^', color='blue')
+    plt.show()
+
+
 if __name__ == '__main__':
     # show_1()
-    #show_2()
+    # show_2()
     # show_3()
-    show_4()
+    # test_3()
+    show_cake()
