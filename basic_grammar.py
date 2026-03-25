@@ -38,8 +38,6 @@ def string_test():
     word = "he said 'i went to dinner'"  # 内部有单引号，则外面用双引号
 
 
-
-
 # 计算相关
 def test_compute():
     a = 4 ** 3  # 4的3次方
@@ -52,6 +50,8 @@ def test_compute():
     n = int(m)  # 浮点变整形 值为4
     p = float(4)  # 整型变浮点4.0
 
+    print("测试sum方法1", sum([1, 2, 3]))
+    print("测试sum方法2", sum(range(101)))
 
 # 条件语句
 def test_condition():
@@ -119,7 +119,7 @@ def test_str():
 
 if __name__ == '__main__':
     # test_math()
-    string_test()
-# test_compute()
-# test_pass()
-# test_str()
+    #string_test()
+    test_compute()
+    # test_pass()
+    # test_str()

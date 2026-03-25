@@ -14,6 +14,15 @@ def test_list():
     # print(list[2:4])
     # print(list1 + list2)
 
+    # mark 初始化列表
+    numbers = [x for x in range(1, 11)]
+    print("打印列表", numbers)
+
+    fruits = ['orange', 'grape', 'pitaya', 'blueberry']
+    # point 遍历列表，获取索引和元素
+    for index, fruit in enumerate(fruits):
+        print(index, ':', fruit)
+
 
 # 元组，相当于只读的不可变列表
 def test_array():
@@ -50,9 +59,8 @@ def test_array():
     # # 索引遍历
     # for index in range(len(list1)):
     #     print('遍历a : %s' % list1[index])
-    print('%.3f 秒' % timeit.timeit('[1, 2, 3, 4, 5, 6, 7, 8, 9]', number=10000000)) #M1 0.408 秒
-    print('%.3f 秒' % timeit.timeit('(1, 2, 3, 4, 5, 6, 7, 8, 9)', number=10000000)) #M1 0.046 秒
-
+    print('%.3f 秒' % timeit.timeit('[1, 2, 3, 4, 5, 6, 7, 8, 9]', number=10000000))  # M1 0.408 秒
+    print('%.3f 秒' % timeit.timeit('(1, 2, 3, 4, 5, 6, 7, 8, 9)', number=10000000))  # M1 0.046 秒
 
 
 # 集合。相当于列表去重
@@ -82,7 +90,7 @@ def test_map():
 
 
 if __name__ == '__main__':
-    # test_list()
-    test_array()
-    # test_map()
-    # test_set()
+    test_list()
+# test_array()
+# test_map()
+# test_set()
