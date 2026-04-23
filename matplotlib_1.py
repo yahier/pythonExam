@@ -147,5 +147,5 @@ if __name__ == '__main__':
     # show_1()
     # show_2()
     # show_3()
-    # test_3()
-    show_cake()
+     test_3()
+    #show_cake()

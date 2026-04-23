@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 
-# 自定义异常
+# 自定义异常 point 要继承BaseException
 class Self(BaseException):
     def __init__(self, value):
         self.value = value
@@ -19,15 +19,24 @@ def test_input():
 
 
 def test_write():
+    fo = None
     # open(file_name [, access_mode][, buffering])
     # mode有非常多种 比如只读r(默认模式)，写入w(每次都覆盖写入，文件不存在则创建)，追加a(内容追加，文件不存在则创建)
     # mode r+ 打开一个文件用于读写。文件指针将会放在文件的开头。
-    fo = open("foo.txt", "r")
-    # fo.write("\n超级塞牙人的能量级别相当于星球级别")
-    print(fo.readline())
-    # content = fo.read()
-    # print("content is %s" % content)
-    fo.close()
+    try:
+        fo = open(file_name, "r")
+        # fo.write("\n超级塞牙人的能量级别相当于星球级别")
+
+        # print(fo.readline())
+
+        # mark read()方法遇到大文件时会卡顿，推荐使用这个方法 for line in file:
+        content = fo.read()
+        print("content is \n%s" % content)
+    except  IOError as e:
+        print(f"错误：文件 '{file_name}' 不存在。")
+    finally:
+        if fo:
+            fo.close()
 
 
 file_name = "foo.txt"

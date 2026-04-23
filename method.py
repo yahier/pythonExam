@@ -26,7 +26,7 @@ def print_info(**kwargs):
         print(f"{key}: {value}")
 
 
-# 匿名函数 lambda [arg1 [,arg2,.....argn]]:expression
+# point 匿名函数 lambda [arg1 [,arg2,.....argn]]:expression
 sum = lambda arg1, arg2: arg1 + arg2
 
 if __name__ == '__main__':
