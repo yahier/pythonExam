@@ -95,7 +95,8 @@ def test_create():
     print("测试rand方法", random23)
 
 
-    print("测试randint方法", np.random.randint(0, 9, 4))
+    print("测试randint方法", np.random.randint(0, 9, 4)) #mark  创建一维随机数组
+    scores = np.random.randint(60, 101, (5, 3)) #mark 创建二维随机数组
 
 
 def test_temp_0426():

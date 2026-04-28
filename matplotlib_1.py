@@ -4,35 +4,50 @@ import numpy as np
 
 # 绘制一个正弦函数图像。
 def show_1():
+    # 2. 创建画布和坐标轴.创建的子图数量是 rows*columns 都不传时，就是创建一个子图
+    fig, (ax, ax2) = plt.subplots(1, 2, figsize=(8, 4))  # figsize设置画布大小(宽, 高)
+    # fig = plt.figure(figsize=(8, 4), dpi=120) #只返回一个figure
+    print(f" fig的类型是{type(fig)}  ax的类型是{type(ax)}")
+
+    # 3. 绘制图形
     # 1. 准备数据
     x = np.linspace(0, 2 * np.pi, 100)  # 在0到2π之间生成100个点
     y = np.sin(x)  # 计算对应的正弦值
-
-    # 2. 创建画布和坐标轴
-    fig, ax = plt.subplots(figsize=(8, 4))  # figsize设置画布大小(宽, 高)
-
-    # 3. 绘制图形
-    ax.plot(x, y, color='blue', linestyle='-', linewidth=2, label='sin(x)')
+    ax.plot(x, y, color='blue', linestyle='-', linewidth=2, label='legend sin(x)')
+    ax2.plot(x, y)
 
     # 4. 添加标题和坐标轴标签
-    ax.set_title('基础正弦曲线图', fontsize=14)
-    ax.set_xlabel('x (弧度)', fontsize=12)
+    ax.set_title('test', fontsize=14)
+    ax.set_xlabel('x curve', fontsize=12)
     ax.set_ylabel('sin(x)', fontsize=12)
 
     # 5. 添加图例
-    ax.legend()
+    ax.legend()  # 图例，刻印文字
 
+    # fig.savefig('show_1.png', format='pdf', bbox_inches='tight')
     # 6. 显示图形
     plt.show()
 
 
 # 生成柱形图
 def show_2():
-    categories = ['A', 'B', 'C', 'D']
-    values = [10, 25, 15, 30]
     # point subplots建立坐标系
-    fig, ax = plt.subplots()
-    ax.bar(categories, values, color='skyblue')
+    fig, ax = plt.subplots(figsize=(8, 8))
+    print(f" show_2 fig的类型是{type(fig)}  ax的类型是{type(ax)}")
+
+    categories = ['A', 'B', 'C', 'D']
+
+    # mark 绘制一个柱状图
+    # values = [10, 25, 15, 30]
+    # ax.bar(categories, values, width=0.5, color='skyblue', label='sale amount')
+
+    # mark 绘制两个柱状图
+    values1 = [10, 25, 15, 30]
+    values2 = [5, 10, 15, 12]
+    ax.bar(categories, values1, label='one')
+    ax.bar(categories, values2, bottom=values1, label='two')  # bottom 柱子底部起始位置（默认0）表现处的效果是高度=两个值相加的高度
+
+    ax.legend()
     plt.show()
 
 
@@ -74,7 +89,7 @@ def show_4():
 
 # 绘制饼图
 def show_cake():
-    print("准备打印饼图啦 ") #, np.random.rand(7, 3)
+    print("准备打印饼图啦 ")  # , np.random.rand(7, 3)
     data = np.random.randint(100, 500, 7)
     labels = ['apple', 'banan', 'peach', 'lizhi', 'shiliu', 'shanzhu', 'liulian']
 
@@ -143,9 +158,22 @@ def test_3():
     plt.show()
 
 
+def test_0427():
+    x = np.arange(1, 10, 1)
+    y = x * x
+    plt.figure(figsize=(8, 8), dpi=120)
+    plt.grid(True)  # 绘制网格
+    plt.plot(x, y, linewidth=2, marker='*', color='red')
+
+    # plt.text(x, y, 'beyond')
+
+    plt.show()
+
+
 if __name__ == '__main__':
     # show_1()
-    # show_2()
-    # show_3()
-     test_3()
-    #show_cake()
+    # test_0427()
+    show_2()
+# show_3()
+# test_3()
+# show_cake()
