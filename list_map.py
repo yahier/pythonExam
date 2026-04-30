@@ -15,7 +15,7 @@ def test_list():
     print(f"list1 index  {list1.index('john', 2)}")
 
     if "bing" in "bingo":
-        print(f"{""}在list1中 {list1.index('')}")
+        print(f"在list1中 {list1.index('')}")
 
     "bin".find("in")
 
